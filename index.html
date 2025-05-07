@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Annu!</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom right, #ffd1dc, #ffe4e1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Comic Sans MS', cursive;
+    }
+    .card {
+      width: 300px;
+      height: 400px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.5s;
+    }
+    .card.open {
+      transform: rotateY(180deg);
+    }
+    .front, .back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .front {
+      background: #ffcccb;
+    }
+    .back {
+      background: #fff;
+      transform: rotateY(180deg);
+      text-align: center;
+    }
+    .cake {
+      width: 100px;
+      height: 100px;
+      background: pink;
+      border-radius: 10px;
+      position: relative;
+      margin: 20px auto;
+    }
+    .candle {
+      width: 10px;
+      height: 30px;
+      background: orange;
+      position: absolute;
+      top: -30px;
+      left: 45px;
+    }
+    .flame {
+      width: 10px;
+      height: 10px;
+      background: yellow;
+      border-radius: 50%;
+      position: absolute;
+      top: -40px;
+      left: 45px;
+      animation: flicker 1s infinite;
+    }
+    @keyframes flicker {
+      0% {transform: scale(1);}
+      50% {transform: scale(1.2);}
+      100% {transform: scale(1);}
+    }
+    h1 {
+      font-size: 20px;
+      color: #ff1493;
+    }
+    p {
+      font-size: 14px;
+      color: #555;
+    }
+    .thought {
+      margin-top: 10px;
+      font-style: italic;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" onclick="openCard()">
+    <div class="front">
+      <h1>Click to Open 🎁</h1>
+    </div>
+    <div class="back">
+      <div class="cake">
+        <div class="candle"></div>
+        <div class="flame" id="flame"></div>
+      </div>
+      <h1 id="birthdayText" style="display:none">Happy Birthday Annu! 🎉</h1>
+      <p class="thought" id="thought" style="display:none">"Stay happy, stay blessed!"</p>
+      <p id="message" style="display:none">I’m really sorry I missed your birthday yesterday. Wishing you lots of happiness and success — belated happy birthday! Let’s catch up soon and celebrate. 🥳</p>
+    </div>
+  </div>
+
+  <script>
+    function openCard() {
+      const card = document.querySelector('.card');
+      card.classList.add('open');
+      
+      setTimeout(() => {
+        document.getElementById('flame').style.display = 'none'; // Candle blow
+      }, 2000);
+      setTimeout(() => {
+        document.getElementById('birthdayText').style.display = 'block';
+        document.getElementById('thought').style.display = 'block';
+        document.getElementById('message').style.display = 'block';
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
